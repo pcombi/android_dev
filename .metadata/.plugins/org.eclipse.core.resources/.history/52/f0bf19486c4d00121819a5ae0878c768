@@ -1,0 +1,41 @@
+package com.example.exampleapp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+public class GraphicsSurface extends Activity implements OnTouchListener {
+	
+	MyBringBackSurface ourSurfaceView;
+	
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		ourSurfaceView = new MyBringBackSurface(this);
+		ourSurfaceView.setOnTouchListener(this);
+		setContentView(ourSurfaceView);
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		ourSurfaceView.pause();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		ourSurfaceView.resume();
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+}

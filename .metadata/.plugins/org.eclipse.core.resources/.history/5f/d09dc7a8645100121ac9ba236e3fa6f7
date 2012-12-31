@@ -1,0 +1,189 @@
+package com.softalien.englishgrammar;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class TestsActivity extends Activity {
+
+	int displayWidth = 0;
+	Button erase;
+	LinearLayout answerLayout;
+	TextView tvQuestion;
+	TextView tvAnswer;
+	int currentAnswerLayoutWidth = 0;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.tests);
+		initialize();
+
+		answerLayout = (LinearLayout) findViewById(R.id.lAnswers);
+		
+		Display display = getWindowManager().getDefaultDisplay();
+		displayWidth = display.getWidth();
+		String question = "He didn't want to go home";
+		String answer = "He didn't want to go home";
+		String[] options1 = {"He", "She", "It", "I", "We"};
+		String[] options2 = { "wanted", "didn't wanted", "widn't want", "will want",
+				"wants"};
+		String[] options3 = {"to go", "go", "went", "to went", "gone"};
+		String[] options4 = {"home", "to home", "at home", "at house"};
+		
+		buildLayoutWithOptions(options1, 1);
+		buildLayoutWithOptions(options2, 2);
+		buildLayoutWithOptions(options3, 3);
+		buildLayoutWithOptions(options4, 4);
+		
+		tvQuestion.setText(question);
+		
+		erase.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				removeButtonFromLayout(null, answerLayout, true);
+			}
+		});
+
+	}
+	
+	public void initialize() {
+		// answerLayout = (LinearLayout) findViewById(R.id.lAnswers);
+		erase = (Button) findViewById(R.id.bErase);
+		tvQuestion = (TextView) findViewById(R.id.tvQuestion);
+		tvAnswer = (TextView)findViewById(R.id.tvAnswer);
+	}
+	
+	public void buildLayoutWithOptions(String[] options, int layoutId) {
+		LinearLayout ll = null;
+		switch (layoutId) {
+		case 1:
+			ll = (LinearLayout) findViewById(R.id.buttonOptions1);
+		break;
+		case 2:
+			ll = (LinearLayout) findViewById(R.id.buttonOptions2);
+		break;
+		case 3:
+			ll = (LinearLayout) findViewById(R.id.buttonOptions3);
+		break;
+		case 4:
+			ll = (LinearLayout) findViewById(R.id.buttonOptions4);
+		break;
+
+		}
+		int currentWidth = 0;
+		LinearLayout newLL = getNewLinearLayout();
+		ll.addView(newLL);
+		for (int i = 0; i < options.length; i++) {
+
+			final String name = options[i];
+			final Button myButton = createNewButton(name);
+			myButton.measure(0, 0);
+			currentWidth += myButton.getMeasuredWidth();
+			if (currentWidth > displayWidth) {
+				newLL = getNewLinearLayout();
+				ll.addView(newLL);
+				currentWidth = myButton.getMeasuredWidth();
+			}
+
+			newLL.addView(myButton);
+			
+			final LinearLayout newLayout = getNewLinearLayout();
+			answerLayout.addView(newLayout);
+			myButton.setOnClickListener(new OnClickListener() {
+			
+				@Override
+				public void onClick(View v) {
+					String name = myButton.getText().toString();
+					if (!isButtonAlreadyClicked(name, answerLayout)) {
+						
+						Button newButton = createNewButton(name);
+						newButton.measure(0, 0);
+						currentAnswerLayoutWidth += newButton.getMeasuredWidth();
+						if (currentAnswerLayoutWidth > displayWidth) {
+							newLayout = getNewLinearLayout();
+							newLayout.addView(newButton);
+							answerLayout.addView(newLayout);
+							currentAnswerLayoutWidth = myButton.getMeasuredWidth();
+						}
+						newLayout.addView(newButton);
+						Toast t = Toast.makeText(TestsActivity.this, name,
+								Toast.LENGTH_LONG);
+						t.show();
+					} else {
+						removeButtonFromLayout(name, answerLayout, false);
+					}
+				}
+
+			});
+		}
+	}
+	
+	private LinearLayout getNewLinearLayout() {
+		LinearLayout newLL = new LinearLayout(this);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				displayWidth, 80);
+		newLL.setLayoutParams(params);
+		newLL.setPadding(0, 5, 0, 0);
+		newLL.setOrientation(LinearLayout.HORIZONTAL);
+		return newLL;
+	}
+
+	public boolean isButtonAlreadyClicked(String name, LinearLayout layout) {
+		boolean result = false;
+		for (int i = 0; i < layout.getChildCount(); i++) {
+			for (int j = 0; j < ((LinearLayout)layout.getChildAt(i)).getChildCount(); j ++) {
+				if (((Button)((LinearLayout)layout.getChildAt(i)).getChildAt(j)).getText().equals(name)) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	private Button createNewButton(String name) {
+		Button myButton = new Button(TestsActivity.this);
+		myButton.setText(name);
+		return myButton;
+	}
+
+	private void removeButtonFromLayout(String name, LinearLayout layout,
+			boolean last) {
+		if (!last && name != null) {
+			for (int i = 0; i < layout.getChildCount(); i++) {
+				for (int j = 0; j < ((LinearLayout)layout.getChildAt(i)).getChildCount(); j ++) {
+					if (((Button)((LinearLayout)layout.getChildAt(i)).getChildAt(j)).getText().equals(name)) {
+						layout.removeViewAt(i);
+					}
+				}
+			}
+		} else {
+			layout.removeViewAt(layout.getChildCount() - 1);
+		}
+	}
+
+	
+
+	// Resources r = this.getBaseContext().getResources();
+	// myButton.setBackground(r.getDrawable(R.drawable.btn_blue));
+	// or
+	// InputStream is = getResources().openRawResource(R.drawable.btn_blue);
+	// myButton.setBackground(Drawable.createFromStream(is, null);
+	// myButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_blue));
+
+	// myButton.setBackgroundResource(R.drawable.btn_blue);
+
+	// LayoutParams pars = new LayoutParams(LayoutParams.WRAP_CONTENT,
+	// LayoutParams.WRAP_CONTENT);
+	// myButton.setLayoutParams(pars);
+	// myButton.setBackgroundColor(Color.BLUE);
+	// myButton.setBackgroundColor(Color.BLUE);
+}

@@ -1,0 +1,24 @@
+package com.softalien.englishgrammar;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class MenuActivity extends Activity {
+	
+	Button bLessons;
+	Button bTests;
+	Button bExit;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.menu);
+		initialize();
+	}
+	
+	public void initialize() {
+		bLessons = (Button) findViewById(R.id.bLessons);
+		bTests = (Button) findViewById(R.id.bTests);
+	}
+}

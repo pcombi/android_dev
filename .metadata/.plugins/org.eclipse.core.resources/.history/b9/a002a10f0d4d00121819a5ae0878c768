@@ -1,0 +1,30 @@
+package com.example.exampleapp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class Data extends Activity implements View.OnClickListener {
+	
+	Button start, startFor;
+	EditText sendET;
+	TextView gotAnswer;
+	
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.get);
+		initialize();
+	}
+	
+	private void initialize() {
+		start = (Button) findViewById(R.id.bSA);
+		startFor = (Button) findViewById(R.id.bSAFR);
+		sendET = (EditText) findViewById(R.id.etSend);
+		gotAnswer = (TextView) findViewById(R.id.tvGot);
+		start.setOnClickListener(this);
+		start.setOnClickListener(this);
+	}
+}

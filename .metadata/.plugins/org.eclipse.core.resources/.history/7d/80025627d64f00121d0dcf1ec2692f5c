@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">EnglishGrammar</string>
+    <string name="lessons">Теория</string>
+    <string name="tests">Тесты</string>
+    <string name="exit">Выход</string>
+    <string name="erase">стереть</string>
+
+</resources>

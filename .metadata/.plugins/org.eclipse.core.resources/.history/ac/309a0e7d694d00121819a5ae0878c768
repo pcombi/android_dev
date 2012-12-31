@@ -1,0 +1,24 @@
+package com.example.exampleapp;
+
+import android.content.Context;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+public class MyBringBackSurface extends SurfaceView implements Runnable {
+	
+	SurfaceHolder ourHolder;
+	Thread ourThread;
+	
+	public MyBringBackSurface(Context context) {
+		super(context);
+		ourHolder = getHolder();
+		ourThread = new Thread(this);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

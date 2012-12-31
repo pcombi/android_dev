@@ -1,0 +1,28 @@
+package com.example.exampleapp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class SimpleBrowser extends Activity {
+	
+	EditText url;
+	WebView ourBrowser;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.simplebrowser);
+		ourBrowser = (WebView) findViewById(R.id.wvBrowser);
+		ourBrowser.loadUrl("http://www.google.com");
+		
+		Button go = (Button) findViewById(R.id.bGo);
+		Button back = (Button) findViewById(R.id.bBack);
+		Button refresh = (Button) findViewById(R.id.bRefresh);
+		Button clearHistory = (Button) findViewById(R.id.bHistory);
+		Button forward = (Button) findViewById(R.id.bForward);
+	}
+	
+}

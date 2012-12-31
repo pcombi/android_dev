@@ -1,0 +1,32 @@
+package com.example.exampleapp;
+
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class SQLiteExample extends Activity implements OnClickListener {
+
+	
+	Button sqlUpdate,sqlView;
+	EditText sqlName, sqlHotness;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.sqliteexample);
+		sqlUpdate = (Button) findViewById(R.id.bUpdateSQL);
+		sqlView = (Button) findViewById(R.id.bView);
+		sqlName = (EditText) findViewById(R.id.etName);
+		sqlHotness = (EditName) findViewById(R.id.etHotness);
+	}
+
+	public void onClick(DialogInterface arg0, int arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,59 @@
+package com.example.listviewdemo;
+
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+public class MainActivity extends ListActivity {
+	
+	String [] presidents = {
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4",
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4",
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4",
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4",
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4",
+			"Test 1",
+			"Test 2",
+			"Test 3",
+			"Test 4"
+	}; 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		//setContentView(R.layout.activity_main);
+		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, presidents));
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		Toast.makeText(getApplicationContext(), "clicked back", 100);
+		super.onBackPressed();
+		
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
+	}
+
+}

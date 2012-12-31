@@ -1,0 +1,80 @@
+package com.softalien.englishgrammar;
+
+import java.io.InputStream;
+
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+public class TestsActivity extends Activity {
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.tests);
+		String[] answerVerbs = {"go", "went", "gone", "will go", "will not go", "goes", "has gone", "has been gone", "went", "gone", "will go", "will not go", "goes", "has gone", "has been gone"};
+		
+		LinearLayout ll = (LinearLayout)findViewById(R.id.buttonlayout1);
+		Display display = getWindowManager().getDefaultDisplay();
+		int displayWidth = display.getWidth();
+		int currentWidth = 0;
+		LinearLayout newLL = getNewLinearLayout();
+		ll.addView(newLL);
+		for (int i=0; i < answerVerbs.length; i++) {
+			Button myButton = new Button(TestsActivity.this);
+			Resources r = this.getBaseContext().getResources();
+			myButton.setBackground(r.getDrawable(R.drawable.btn_blue));
+			//or 
+			//InputStream is = getResources().openRawResource(R.drawable.btn_blue);
+			//myButton.setBackground(Drawable.createFromStream(is, null);
+			final String name = answerVerbs[i];
+			myButton.setText(name);
+			//LayoutParams pars = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			//myButton.setLayoutParams(pars);
+			//myButton.setBackgroundColor(Color.BLUE);
+			
+			newLL.addView(myButton);
+			myButton.measure(0, 0);
+			currentWidth += myButton.getMeasuredWidth();
+			
+			if (currentWidth > displayWidth) {
+				newLL = getNewLinearLayout();
+				ll.addView(newLL);
+				currentWidth = 0;
+			}
+			//LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			
+			myButton.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Toast t = Toast.makeText(TestsActivity.this, name, Toast.LENGTH_LONG);
+					t.show();
+				}
+
+				
+			});
+		}
+		
+	}
+	private LinearLayout getNewLinearLayout() {
+		LinearLayout newLL = new LinearLayout(this);
+		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		newLL.setLayoutParams(params);
+		newLL.setOrientation(LinearLayout.HORIZONTAL);
+		return newLL;
+	}
+
+
+}
