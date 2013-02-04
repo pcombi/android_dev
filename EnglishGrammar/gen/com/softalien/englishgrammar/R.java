@@ -22,23 +22,28 @@ public final class R {
         public static final int plus=0x7f020008;
     }
     public static final class id {
-        public static final int bDone=0x7f060008;
+        public static final int bDone=0x7f06000a;
         public static final int bExit=0x7f060002;
         public static final int bLessons=0x7f060000;
         public static final int bTests=0x7f060001;
-        public static final int buttonOptions1=0x7f060009;
-        public static final int buttonOptions2=0x7f06000a;
-        public static final int buttonOptions3=0x7f06000b;
-        public static final int buttonOptions4=0x7f06000c;
+        public static final int buttonOptions1=0x7f06000b;
+        public static final int buttonOptions2=0x7f06000c;
+        public static final int buttonOptions3=0x7f06000d;
+        public static final int buttonOptions4=0x7f06000e;
         public static final int imageView1=0x7f060003;
-        public static final int lAnswers=0x7f060006;
-        public static final int llButtons=0x7f060007;
-        public static final int tvAnswer=0x7f060005;
-        public static final int tvQuestion=0x7f060004;
+        public static final int lAnswers=0x7f060008;
+        public static final int llButtons=0x7f060009;
+        public static final int scrollView1=0x7f060004;
+        public static final int tvAnswer=0x7f060007;
+        public static final int tvQuestion=0x7f060006;
+        public static final int tvTitle=0x7f060005;
+        public static final int wview=0x7f06000f;
     }
     public static final class layout {
         public static final int menu=0x7f030000;
-        public static final int tests=0x7f030001;
+        public static final int presentsimple=0x7f030001;
+        public static final int tests=0x7f030002;
+        public static final int theoryview=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -46,6 +51,8 @@ public final class R {
         public static final int erase=0x7f040004;
         public static final int exit=0x7f040003;
         public static final int lessons=0x7f040001;
+        public static final int presentsimple=0x7f040006;
+        public static final int prsimple1=0x7f040007;
         public static final int tests=0x7f040002;
     }
     public static final class style {

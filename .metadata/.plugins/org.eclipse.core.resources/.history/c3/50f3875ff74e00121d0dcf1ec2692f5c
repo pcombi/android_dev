@@ -1,7 +1,0 @@
-package com.softalien.englishgrammar;
-
-import android.app.Activity;
-
-public class MenuActivity extends Activity {
-
-}

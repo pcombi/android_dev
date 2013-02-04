@@ -16,7 +16,9 @@ public class GraphicsSurface extends Activity implements OnTouchListener {
 	
 	MyBringBackSurface ourSurfaceView;
 	float x,y, sX, sY, fX, fY, dX, dY, aniX, aniY, scaledX, scaledY;
-	Bitmap test, plus;
+	Bitmap test, plus, blob;
+	Sprite sprite;
+	
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

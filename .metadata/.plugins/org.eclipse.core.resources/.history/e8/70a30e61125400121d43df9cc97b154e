@@ -1,0 +1,40 @@
+package com.example.nasarssfeed;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+
+import android.graphics.Bitmap;
+
+public class IotdHandler extends DefaultHandler {
+	private String url = "http://http://www.nasa.gov/rss/image_of_the_day.rss";
+	private boolean inUrl = false;
+	private boolean inTitle = false;
+	private boolean inDescription = false;
+	private boolean inItem = false;
+	private boolean inDate = false;
+	private Bitmap image = null;
+	private String title = null;
+	private StringBuffer description = new StringBuffer();
+	private String date = null;
+	
+	public void processFeed() {
+		try {
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			XMLReader reader = parser.getXMLReader();
+			reader.setContentHandler(this);
+			InputStream inputStream = new URL(url).openStream();
+			reader.parse(new InputSource(inputStream));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+}

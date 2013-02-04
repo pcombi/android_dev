@@ -30,6 +30,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.softalien.englishgrammar.TopicsMenu"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.TOPICS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.softalien.englishgrammar.PresentSimple"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.PRESENTSIMPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">EnglishGrammar</string>
+    <string name="lessons">Теория</string>
+    <string name="tests">Тесты</string>
+    <string name="exit">Выход</string>
+    <string name="erase">Стереть</string>
+    <string name="done">Готово</string>Present Simple  (Presen Indefinite) - Настоящее Простое.
+    <style name="ButtonText">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">1dp</item>
+	    <item name="android:textSize">17dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	</style>
+    <string name="presentsimple">Present Simple  (Presen Indefinite) - Настоящее Простое.</string>
+    <string name="prsimple1">Время Present Simple обозначает действие в настоящем в широком смысле слова. Оно употребляется для обозначения обычных, регулярно повторяющихся или постоянных действий, например, когда мы говорим о чьих либо привычках, режиме дня, расписании и т. д., т. е. Present Simple обозначает действия, которые происходят в настоящее время, но не привязаны именно к моменту речи.</string>
+
+</resources>

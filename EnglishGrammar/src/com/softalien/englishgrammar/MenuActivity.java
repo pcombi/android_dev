@@ -34,7 +34,8 @@ public class MenuActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.bLessons:
-
+			Intent topicsIntent = new Intent("android.intent.action.TOPICS");
+			startActivity(topicsIntent);
 			break;
 		case R.id.bTests:
 			Intent i = new Intent("android.intent.action.TESTS");

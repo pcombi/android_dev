@@ -1,0 +1,35 @@
+package com.softalien.englishgrammar;
+
+import android.app.ListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class TopicsMenu extends ListActivity {
+	String classes[] = {"PresentSimple"};
+	String listOptions[] = {"Present Simple - Настоящее Простое"};
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		super.onListItemClick(l, v, position, id);
+		String className = classes[position];
+		try {
+			Class selClass = Class.forName("com.softalien.englishgrammar." + className);
+			Intent i = new Intent(TopicsMenu.this, selClass);
+			startActivity(i);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	} 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setListAdapter(new ArrayAdapter<String>(TopicsMenu.this, android.R.layout.simple_list_item_1, classes));
+	}
+
+}
